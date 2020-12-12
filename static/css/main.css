@@ -91,12 +91,12 @@ h3 {
     margin: 0;
     padding-bottom: 0;
     padding-top: 0;
-    background-color: #212121;
+    background-color: #363636;
     border: 0;
 }
 
 .bg-trezor {
-    background-color: #212121!important;
+    background-color: #363636!important;
     padding-top: 3px;
     padding-bottom: 2px;
     z-index: 2;
@@ -127,7 +127,7 @@ h3 {
 }
 
 #footer {
-    background-color: #212121;
+    background-color: #363636;
     color: #fff;
     height: 42px;
     overflow: hidden;

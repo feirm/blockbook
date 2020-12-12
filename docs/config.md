@@ -109,7 +109,6 @@ Since Blockbook is an open-source project and we don't prevent anybody from runn
 to alter built-in text that is specific for Trezor. Text fields that could be updated are:
 
  * [about](/build/text/about) – A note about instance shown on the Application status page and returned by an API.
- * [tos_link](/build/text/tos_link) – A link to Terms of service shown as the footer on the Explorer pages.
 
 Text data are stored as plain text files in *build/text* directory and are embedded to binary during build. A change of
 theese files is mean for a private purpose and PRs that would update them won't be accepted.
