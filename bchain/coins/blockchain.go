@@ -25,6 +25,7 @@ import (
 	"github.com/trezor/blockbook/bchain/coins/divi"
 	"github.com/trezor/blockbook/bchain/coins/dogecoin"
 	"github.com/trezor/blockbook/bchain/coins/eth"
+	"github.com/trezor/blockbook/bchain/coins/feirm"
 	"github.com/trezor/blockbook/bchain/coins/flo"
 	"github.com/trezor/blockbook/bchain/coins/fujicoin"
 	"github.com/trezor/blockbook/bchain/coins/gamecredits"
@@ -115,6 +116,7 @@ func init() {
 	BlockChainFactories["Omotenashicoin"] = omotenashicoin.NewOmotenashiCoinRPC
 	BlockChainFactories["Omotenashicoin Testnet"] = omotenashicoin.NewOmotenashiCoinRPC
 	BlockChainFactories["BitZeny"] = bitzeny.NewBitZenyRPC
+	BlockChainFactories["Feirm"] = feirm.NewFeirmRPC
 }
 
 // GetCoinNameFromConfig gets coin name and coin shortcut from config file
