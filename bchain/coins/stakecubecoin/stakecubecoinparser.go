@@ -3,6 +3,7 @@ package stakecubecoin
 import (
 	"github.com/martinboehm/btcd/wire"
 	"github.com/martinboehm/btcutil/chaincfg"
+	"github.com/trezor/blockbook/bchain"
 	"github.com/trezor/blockbook/bchain/coins/btc"
 )
 
@@ -46,6 +47,7 @@ func init() {
 // StakeCubeCoinParser handle
 type StakeCubeCoinParser struct {
 	*btc.BitcoinParser
+	baseparser *bchain.BaseParser
 }
 
 // NewStakeCubeCoinParser returns new StakeCubeCoinParser instance
@@ -77,4 +79,14 @@ func GetChainParams(chain string) *chaincfg.Params {
 	default:
 		return &MainNetParams
 	}
+}
+
+// PackTx packs transaction to byte array using protobuf
+func (p *StakeCubeCoinParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
+	return p.baseparser.PackTx(tx, height, blockTime)
+}
+
+// UnpackTx unpacks transaction from protobuf byte array
+func (p *StakeCubeCoinParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
+	return p.baseparser.UnpackTx(buf)
 }
