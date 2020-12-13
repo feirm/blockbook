@@ -2,6 +2,7 @@ package stakecubecoin
 
 import (
 	"encoding/json"
+	"math/big"
 
 	"github.com/golang/glog"
 	"github.com/juju/errors"
@@ -12,6 +13,7 @@ import (
 // StakeCubeCoinRPC is an interface to JSON-RPC bitcoind service.
 type StakeCubeCoinRPC struct {
 	*btc.BitcoinRPC
+	minFeeRate *big.Int // satoshi per kb
 }
 
 // NewStakeCubeCoinRPC returns new StakeCubeCoinRPC instance.
@@ -23,9 +25,10 @@ func NewStakeCubeCoinRPC(config json.RawMessage, pushHandler func(bchain.Notific
 
 	s := &StakeCubeCoinRPC{
 		b.(*btc.BitcoinRPC),
+		big.NewInt(4000000),
 	}
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
-	s.ChainConfig.SupportsEstimateSmartFee = false
+	s.ChainConfig.SupportsEstimateSmartFee = true
 
 	return s, nil
 }
@@ -105,4 +108,15 @@ func (s *StakeCubeCoinRPC) GetBlock(hash string, height uint32) (*bchain.Block, 
 // It could be optimized for mempool, i.e. without block time and confirmations
 func (s *StakeCubeCoinRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
 	return s.GetTransaction(txid)
+}
+
+// EstimateSmartFee returns fee estimation
+func (s *StakeCubeCoinRPC) EstimateSmartFee(blocks int, conservative bool) (big.Int, error) {
+	feeRate, err := s.BitcoinRPC.EstimateSmartFee(blocks, conservative)
+	if err != nil {
+		if s.minFeeRate.Cmp(&feeRate) == 1 {
+			feeRate = *s.minFeeRate
+		}
+	}
+	return feeRate, err
 }
