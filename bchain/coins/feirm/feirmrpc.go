@@ -26,6 +26,8 @@ func NewFeirmRPC(config json.RawMessage, pushHandler func(bchain.NotificationTyp
 	}
 
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
+	s.ChainConfig.SupportsEstimateFee = true
+	s.ChainConfig.SupportsEstimateSmartFee = false
 
 	return s, nil
 }
