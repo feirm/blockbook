@@ -33,6 +33,7 @@ import (
 	"github.com/trezor/blockbook/bchain/coins/koto"
 	"github.com/trezor/blockbook/bchain/coins/liquid"
 	"github.com/trezor/blockbook/bchain/coins/litecoin"
+	"github.com/trezor/blockbook/bchain/coins/lunarium"
 	"github.com/trezor/blockbook/bchain/coins/monacoin"
 	"github.com/trezor/blockbook/bchain/coins/monetaryunit"
 	"github.com/trezor/blockbook/bchain/coins/myriad"
@@ -119,6 +120,7 @@ func init() {
 	BlockChainFactories["BitZeny"] = bitzeny.NewBitZenyRPC
 	BlockChainFactories["Feirm"] = feirm.NewFeirmRPC
 	BlockChainFactories["StakeCubeCoin"] = stakecubecoin.NewStakeCubeCoinRPC
+	BlockChainFactories["Lunarium"] = lunarium.NewLunariumRPC
 }
 
 // GetCoinNameFromConfig gets coin name and coin shortcut from config file
