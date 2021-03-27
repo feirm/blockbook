@@ -22,10 +22,10 @@
     "package_name": "backend-feirm",
     "package_revision": "satoshilabs-1",
     "system_user": "feirm",
-    "version": "2.2.3",
-    "binary_url": "https://github.com/feirm/feirm/releases/download/v2.2.3/feirm-2.2.3-x86_64-linux-gnu.tar.gz",
+    "version": "2.3.0",
+    "binary_url": "https://github.com/feirm/feirm/releases/download/v2.3.0/feirm-2.3.0-x86_64-linux-gnu.tar.gz",
     "verification_type": "sha256",
-    "verification_source": "0890d81962211a0454f375598dda62c2bba5070251309a406c4e238e56c8b1d1",
+    "verification_source": "95e2b853e1a2aa8aef49bd345217e75ca7004ee19bf9c5f2478b91da4e7fb528",
     "extract_command": "tar -C backend --strip 1 -xf",
     "exclude_files": [
       "bin/feirm-qt"
@@ -49,7 +49,7 @@
     "additional_params": "-dbcache=0 -workers=1",
     "block_chain": {
       "parse": true,
-      "subversion": "/Feirm Core:2.2.3/",
+      "subversion": "/Feirm Core:2.3.0/",
       "mempool_workers": 8,
       "mempool_sub_workers": 2,
       "block_addresses_to_keep": 300,
